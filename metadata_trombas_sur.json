@@ -1,0 +1,1060 @@
+{
+  "titulo": "PROBABILIDAD RELATIVA DE TROMBAS MARINAS",
+  "subtitulo": "Visor pronóstico operacional",
+  "frames": [
+    {
+      "fh": 0,
+      "fecha_local": "29 OCT 2026 09:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_000.png",
+      "resumen": {
+        "probabilidad": "NO FAVORABLE",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO LIMITADO",
+        "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 92.0,
+        "viento_10m_medio_kt": 8.4,
+        "t500_min_c": -18.6,
+        "delta_t_850_500_max_c": 31.1,
+        "shear_medio_kt": 21.6,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 29.9,
+        "delta_t_mar_850_c": 12.8,
+        "shear_bajo_kt": 8.6,
+        "interpretacion": "APOYO LIMITADO"
+      },
+      "indices": {
+        "indice_promedio": 29.0,
+        "indice_p95": 35.8
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 43.1,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 46.5,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 51.1,
+          "probabilidad": "VIGILANCIA"
+        }
+      ]
+    },
+    {
+      "fh": 3,
+      "fecha_local": "29 OCT 2026 12:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_003.png",
+      "resumen": {
+        "probabilidad": "NO FAVORABLE",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO LIMITADO",
+        "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 172.0,
+        "viento_10m_medio_kt": 10.0,
+        "t500_min_c": -20.6,
+        "delta_t_850_500_max_c": 31.3,
+        "shear_medio_kt": 27.2,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 30.3,
+        "delta_t_mar_850_c": 12.8,
+        "shear_bajo_kt": 8.6,
+        "interpretacion": "APOYO LIMITADO"
+      },
+      "indices": {
+        "indice_promedio": 26.6,
+        "indice_p95": 35.9
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 44.9,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 46.3,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 46.2,
+          "probabilidad": "NO FAVORABLE"
+        }
+      ]
+    },
+    {
+      "fh": 6,
+      "fecha_local": "29 OCT 2026 15:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_006.png",
+      "resumen": {
+        "probabilidad": "NO FAVORABLE",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO LIMITADO",
+        "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 374.0,
+        "viento_10m_medio_kt": 11.3,
+        "t500_min_c": -21.3,
+        "delta_t_850_500_max_c": 33.3,
+        "shear_medio_kt": 36.3,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 30.6,
+        "delta_t_mar_850_c": 12.8,
+        "shear_bajo_kt": 8.6,
+        "interpretacion": "APOYO LIMITADO"
+      },
+      "indices": {
+        "indice_promedio": 24.2,
+        "indice_p95": 34.9
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 48.2,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 46.3,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 43.5,
+          "probabilidad": "NO FAVORABLE"
+        }
+      ]
+    },
+    {
+      "fh": 9,
+      "fecha_local": "29 OCT 2026 18:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_009.png",
+      "resumen": {
+        "probabilidad": "VIGILANCIA",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SEGUIMIENTO OPERATIVO: condiciones marginales. Revisar próxima corrida GFS."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 906.0,
+        "viento_10m_medio_kt": 12.3,
+        "t500_min_c": -29.3,
+        "delta_t_850_500_max_c": 33.5,
+        "shear_medio_kt": 41.4,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 32.6,
+        "delta_t_mar_850_c": 12.9,
+        "shear_bajo_kt": 8.7,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 29.5,
+        "indice_p95": 59.9
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 47.1,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 44.2,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 61.4,
+          "probabilidad": "VIGILANCIA"
+        }
+      ]
+    },
+    {
+      "fh": 12,
+      "fecha_local": "29 OCT 2026 21:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_012.png",
+      "resumen": {
+        "probabilidad": "VIGILANCIA",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SEGUIMIENTO OPERATIVO: condiciones marginales. Revisar próxima corrida GFS."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 230.0,
+        "viento_10m_medio_kt": 10.4,
+        "t500_min_c": -29.7,
+        "delta_t_850_500_max_c": 30.5,
+        "shear_medio_kt": 38.1,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 33.6,
+        "delta_t_mar_850_c": 12.9,
+        "shear_bajo_kt": 8.8,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 31.5,
+        "indice_p95": 59.7
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 44.4,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 49.5,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 69.2,
+          "probabilidad": "AMBIENTE FAVORABLE"
+        }
+      ]
+    },
+    {
+      "fh": 15,
+      "fecha_local": "30 OCT 2026 00:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_015.png",
+      "resumen": {
+        "probabilidad": "VIGILANCIA",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SEGUIMIENTO OPERATIVO: condiciones marginales. Revisar próxima corrida GFS."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 86.0,
+        "viento_10m_medio_kt": 9.1,
+        "t500_min_c": -30.2,
+        "delta_t_850_500_max_c": 30.6,
+        "shear_medio_kt": 35.5,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 32.7,
+        "delta_t_mar_850_c": 12.8,
+        "shear_bajo_kt": 8.7,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 26.4,
+        "indice_p95": 51.1
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 42.9,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 33.6,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 60.1,
+          "probabilidad": "VIGILANCIA"
+        }
+      ]
+    },
+    {
+      "fh": 18,
+      "fecha_local": "30 OCT 2026 03:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_018.png",
+      "resumen": {
+        "probabilidad": "NO FAVORABLE",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 63.0,
+        "viento_10m_medio_kt": 7.9,
+        "t500_min_c": -27.2,
+        "delta_t_850_500_max_c": 29.5,
+        "shear_medio_kt": 32.1,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 32.6,
+        "delta_t_mar_850_c": 12.7,
+        "shear_bajo_kt": 8.6,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 25.1,
+        "indice_p95": 37.4
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 42.9,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 37.4,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 42.7,
+          "probabilidad": "NO FAVORABLE"
+        }
+      ]
+    },
+    {
+      "fh": 21,
+      "fecha_local": "30 OCT 2026 06:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_021.png",
+      "resumen": {
+        "probabilidad": "NO FAVORABLE",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 79.0,
+        "viento_10m_medio_kt": 7.1,
+        "t500_min_c": -24.6,
+        "delta_t_850_500_max_c": 27.2,
+        "shear_medio_kt": 30.9,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 32.5,
+        "delta_t_mar_850_c": 12.6,
+        "shear_bajo_kt": 8.6,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 25.3,
+        "indice_p95": 38.8
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 40.5,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 37.0,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 43.1,
+          "probabilidad": "NO FAVORABLE"
+        }
+      ]
+    },
+    {
+      "fh": 24,
+      "fecha_local": "30 OCT 2026 09:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_024.png",
+      "resumen": {
+        "probabilidad": "NO FAVORABLE",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 80.0,
+        "viento_10m_medio_kt": 6.5,
+        "t500_min_c": -23.2,
+        "delta_t_850_500_max_c": 28.7,
+        "shear_medio_kt": 28.9,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 32.2,
+        "delta_t_mar_850_c": 12.7,
+        "shear_bajo_kt": 8.6,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 25.4,
+        "indice_p95": 33.5
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 40.4,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 35.3,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 40.6,
+          "probabilidad": "NO FAVORABLE"
+        }
+      ]
+    },
+    {
+      "fh": 27,
+      "fecha_local": "30 OCT 2026 12:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_027.png",
+      "resumen": {
+        "probabilidad": "NO FAVORABLE",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 108.0,
+        "viento_10m_medio_kt": 7.3,
+        "t500_min_c": -22.9,
+        "delta_t_850_500_max_c": 32.6,
+        "shear_medio_kt": 26.1,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 32.3,
+        "delta_t_mar_850_c": 12.8,
+        "shear_bajo_kt": 8.6,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 26.5,
+        "indice_p95": 35.7
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 46.7,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 37.9,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 40.9,
+          "probabilidad": "NO FAVORABLE"
+        }
+      ]
+    },
+    {
+      "fh": 30,
+      "fecha_local": "30 OCT 2026 15:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_030.png",
+      "resumen": {
+        "probabilidad": "NO FAVORABLE",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 186.0,
+        "viento_10m_medio_kt": 8.8,
+        "t500_min_c": -23.3,
+        "delta_t_850_500_max_c": 34.5,
+        "shear_medio_kt": 27.5,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 32.5,
+        "delta_t_mar_850_c": 12.8,
+        "shear_bajo_kt": 8.7,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 27.4,
+        "indice_p95": 37.2
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 49.6,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 42.2,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 43.6,
+          "probabilidad": "NO FAVORABLE"
+        }
+      ]
+    },
+    {
+      "fh": 33,
+      "fecha_local": "30 OCT 2026 18:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_033.png",
+      "resumen": {
+        "probabilidad": "NO FAVORABLE",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 535.0,
+        "viento_10m_medio_kt": 10.0,
+        "t500_min_c": -24.4,
+        "delta_t_850_500_max_c": 35.0,
+        "shear_medio_kt": 29.8,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 32.8,
+        "delta_t_mar_850_c": 12.8,
+        "shear_bajo_kt": 8.8,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 28.5,
+        "indice_p95": 41.4
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 50.2,
+          "probabilidad": "VIGILANCIA"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 44.0,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 43.4,
+          "probabilidad": "NO FAVORABLE"
+        }
+      ]
+    },
+    {
+      "fh": 36,
+      "fecha_local": "30 OCT 2026 21:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_036.png",
+      "resumen": {
+        "probabilidad": "NO FAVORABLE",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 125.0,
+        "viento_10m_medio_kt": 8.9,
+        "t500_min_c": -26.4,
+        "delta_t_850_500_max_c": 32.0,
+        "shear_medio_kt": 30.0,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 33.2,
+        "delta_t_mar_850_c": 12.8,
+        "shear_bajo_kt": 8.8,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 31.4,
+        "indice_p95": 43.8
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 49.6,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 44.7,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 47.6,
+          "probabilidad": "NO FAVORABLE"
+        }
+      ]
+    },
+    {
+      "fh": 39,
+      "fecha_local": "31 OCT 2026 00:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_039.png",
+      "resumen": {
+        "probabilidad": "NO FAVORABLE",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 126.0,
+        "viento_10m_medio_kt": 8.8,
+        "t500_min_c": -24.9,
+        "delta_t_850_500_max_c": 30.9,
+        "shear_medio_kt": 29.3,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 33.6,
+        "delta_t_mar_850_c": 12.8,
+        "shear_bajo_kt": 8.7,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 32.8,
+        "indice_p95": 43.2
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 47.0,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 44.3,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 44.7,
+          "probabilidad": "NO FAVORABLE"
+        }
+      ]
+    },
+    {
+      "fh": 42,
+      "fecha_local": "31 OCT 2026 03:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_042.png",
+      "resumen": {
+        "probabilidad": "NO FAVORABLE",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 103.0,
+        "viento_10m_medio_kt": 8.8,
+        "t500_min_c": -25.9,
+        "delta_t_850_500_max_c": 29.7,
+        "shear_medio_kt": 29.6,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 34.0,
+        "delta_t_mar_850_c": 12.8,
+        "shear_bajo_kt": 8.6,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 34.0,
+        "indice_p95": 46.7
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 44.8,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 43.8,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 47.5,
+          "probabilidad": "NO FAVORABLE"
+        }
+      ]
+    },
+    {
+      "fh": 45,
+      "fecha_local": "31 OCT 2026 06:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_045.png",
+      "resumen": {
+        "probabilidad": "VIGILANCIA",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SEGUIMIENTO OPERATIVO: condiciones marginales. Revisar próxima corrida GFS."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 137.0,
+        "viento_10m_medio_kt": 8.6,
+        "t500_min_c": -26.9,
+        "delta_t_850_500_max_c": 28.3,
+        "shear_medio_kt": 29.7,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 34.5,
+        "delta_t_mar_850_c": 12.7,
+        "shear_bajo_kt": 8.6,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 35.5,
+        "indice_p95": 50.2
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 44.2,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 43.1,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 52.5,
+          "probabilidad": "VIGILANCIA"
+        }
+      ]
+    },
+    {
+      "fh": 48,
+      "fecha_local": "31 OCT 2026 09:00 HORA LOCAL",
+      "png": "MAPA_TROMBAS_048.png",
+      "resumen": {
+        "probabilidad": "VIGILANCIA",
+        "ir": "SIN DESARROLLO RELEVANTE",
+        "tendencia_ir": "SIN CAMBIOS",
+        "atmosfera": "FAVORABLE",
+        "oceano": "APOYO FAVORABLE",
+        "recomendacion": "SEGUIMIENTO OPERATIVO: condiciones marginales. Revisar próxima corrida GFS."
+      },
+      "ir": {
+        "bt_min_ir_c": -46.9,
+        "fecha_ir_obs": "2026-10-29 17:50 UTC",
+        "delta_bt_ir_c": -0.7,
+        "interpretacion": "SIN DESARROLLO RELEVANTE",
+        "tendencia": "SIN CAMBIOS"
+      },
+      "atmosfera": {
+        "cape_max_jkg": 145.0,
+        "viento_10m_medio_kt": 9.3,
+        "t500_min_c": -27.2,
+        "delta_t_850_500_max_c": 30.7,
+        "shear_medio_kt": 29.5,
+        "interpretacion": "FAVORABLE"
+      },
+      "oceano": {
+        "tsm_local_c": 13.6,
+        "delta_t_mar_500_c": 34.8,
+        "delta_t_mar_850_c": 12.7,
+        "shear_bajo_kt": 8.5,
+        "interpretacion": "APOYO FAVORABLE"
+      },
+      "indices": {
+        "indice_promedio": 36.7,
+        "indice_p95": 53.7
+      },
+      "subzonas": [
+        {
+          "lat_min": -43.0,
+          "lat_max": -39.0,
+          "label": "39–43°S",
+          "indice_p95": 45.7,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -46.0,
+          "lat_max": -43.0,
+          "label": "43–46°S",
+          "indice_p95": 41.9,
+          "probabilidad": "NO FAVORABLE"
+        },
+        {
+          "lat_min": -49.0,
+          "lat_max": -46.0,
+          "label": "46–49°S",
+          "indice_p95": 54.7,
+          "probabilidad": "VIGILANCIA"
+        }
+      ]
+    }
+  ]
+}

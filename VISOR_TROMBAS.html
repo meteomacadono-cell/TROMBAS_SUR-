@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Visor Trombas — SUR (39°-49°S)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        :root{
+            --bg:#07152b;
+            --panel:#0d1f3d;
+            --text:#f5f7fb;
+            --muted:#bfd0ee;
+            --accent:#5aa7ff;
+            --ok:#3cb371;
+            --warn:#f0c419;
+            --bad:#e25555;
+            --border:rgba(255,255,255,.12);
+        }
+
+        *{ box-sizing:border-box; }
+
+        body{
+            margin:0;
+            font-family:Arial, Helvetica, sans-serif;
+            background:linear-gradient(180deg,#041024 0%, #081a35 100%);
+            color:var(--text);
+            min-height:100vh;
+        }
+
+        .wrap{
+            width:min(1500px,98vw);
+            margin:0 auto;
+            padding:14px;
+        }
+
+        .head{
+            text-align:center;
+            margin-bottom:10px;
+        }
+
+        .head h1{
+            margin:0;
+            font-size:clamp(24px,3.4vw,44px);
+            font-weight:800;
+        }
+
+        .head h2{
+            margin:4px 0 0;
+            font-size:clamp(14px,1.8vw,22px);
+            color:#fff;
+        }
+
+        .frame-status{
+            text-align:center;
+            font-size:15px;
+            color:var(--muted);
+            margin:8px 0 12px;
+        }
+
+        .layout{
+            display:grid;
+            grid-template-columns:290px 1fr 310px;
+            gap:14px;
+            align-items:start;
+        }
+
+        .panel{
+            background:rgba(13,31,61,.92);
+            border:1px solid var(--border);
+            border-radius:18px;
+            padding:14px;
+            box-shadow:0 8px 24px rgba(0,0,0,.28);
+        }
+
+        .panel h3{
+            margin:0 0 10px;
+            font-size:20px;
+        }
+
+        .tabbar{
+            display:flex;
+            gap:8px;
+            flex-wrap:wrap;
+            margin-bottom:12px;
+        }
+
+        .tabbtn{
+            border:none;
+            border-radius:12px;
+            padding:9px 12px;
+            font-weight:700;
+            cursor:pointer;
+            background:#19345f;
+            color:#fff;
+        }
+
+        .tabbtn.active{
+            background:var(--accent);
+            color:#031124;
+        }
+
+        .kv{
+            display:grid;
+            gap:8px;
+            font-size:15px;
+            line-height:1.35;
+        }
+
+        .k{
+            color:var(--muted);
+            font-weight:700;
+            display:block;
+            margin-bottom:2px;
+        }
+
+        .map-panel{
+            background:rgba(255,255,255,.04);
+            border:1px solid var(--border);
+            border-radius:22px;
+            padding:10px;
+            box-shadow:0 8px 24px rgba(0,0,0,.28);
+        }
+
+        .map-holder{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            min-height:520px;
+            height:78vh;
+        }
+
+       .map-holder img{
+           width:auto;
+           height:auto;
+           max-width:96%;
+           max-height:78vh;
+           object-fit:contain;
+           display:block;
+           margin:auto;
+           border-radius:16px;
+           background:#fff;
+           box-shadow:0 10px 28px rgba(0,0,0,.35);
+       }
+       .top-controls{
+           margin:10px 0 8px;
+       }
+
+        .controls{
+            margin-top:12px;
+            display:flex;
+            justify-content:center;
+            gap:12px;
+        }
+
+        .controls button{
+            border:none;
+            border-radius:14px;
+            padding:10px 18px;
+            cursor:pointer;
+            font-size:20px;
+            font-weight:800;
+            background:#19345f;
+            color:#fff;
+            min-width:62px;
+        }
+
+        .controls button:hover{
+            background:#28518f;
+        }
+
+        .pill{
+            display:inline-block;
+            padding:7px 10px;
+            border-radius:999px;
+            font-weight:800;
+            font-size:14px;
+        }
+
+        .p-ok{ background:rgba(60,179,113,.18); color:#8ef0b5; }
+        .p-warn{ background:rgba(240,196,25,.18); color:#ffe07a; }
+        .p-bad{ background:rgba(226,85,85,.18); color:#ffb0b0; }
+
+        @media (max-width:1100px){
+            .layout{ grid-template-columns:1fr; }
+            .map-holder{ min-height:auto; }
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+
+    <div class="head">
+        <h1 id="titulo">PROBABILIDAD RELATIVA DE TROMBAS MARINAS</h1>
+        <h2 id="subtitulo">Zona Sur — Los Ríos a Aysén (39°–49°S)</h2>
+            <div class="controls top-controls">
+                <button onclick="prevFrame()">⏮</button>
+                <button onclick="stopPlay()">⏸</button>
+                <button onclick="nextFrame()">⏭</button>
+            </div>
+
+        <div class="frame-status" id="frameStatus" style="display:none;"></div>
+    </div>
+
+    <div class="layout">
+
+        <div class="panel">
+            <h3>Detalle técnico</h3>
+            <div class="tabbar">
+                <button class="tabbtn active" data-tab="atmosfera">ATMÓSFERA</button>
+                <button class="tabbtn" data-tab="oceano">OCÉANO</button>
+                <button class="tabbtn" data-tab="ir">IR</button>
+            </div>
+            <div id="tabContent" class="kv"></div>
+        </div>
+
+        <div class="map-panel">
+            <div class="map-holder">
+                <img id="mapImg" src="" alt="Mapa trombas">
+            </div>
+
+        </div>
+
+        <div class="panel">
+            <h3>Resumen operativo</h3>
+            <div class="kv" id="resumenContent"></div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    let frames = [];
+    let idx = 0;
+    let timer = null;
+    let currentTab = "atmosfera";
+
+    const mapImg = document.getElementById("mapImg");
+    const frameStatus = document.getElementById("frameStatus");
+
+    function render() {
+        const frame = frames[idx];
+        if (!frame) return;
+
+        mapImg.src = frame.png + "?v=" + Date.now();
+
+        if (frameStatus) {
+            frameStatus.style.display = "none";
+            frameStatus.textContent = "";
+        }
+
+        renderTab(frame);
+        renderResumen(frame);
+    }
+
+function renderTab(frame) {
+    const cont = document.getElementById("tabContent");
+    if (!cont || !frame) return;
+
+    const data = frame[currentTab];
+
+    if (!data) {
+        cont.innerHTML = "";
+        return;
+    }
+
+let html = "";
+
+for (const k in data) {
+
+    let label = k;
+    let valor = data[k];
+
+    if (valor === null || valor === undefined) {
+        valor = "N/D";
+    }
+
+    if (k === "cape_max_jkg") {
+        label = "CAPE máximo";
+        valor = valor + " J/kg";
+    }
+
+    else if (k === "viento_10m_medio_kt") {
+        label = "Viento medio 10 m";
+        valor = valor + " kt";
+    }
+
+    else if (k === "t500_min_c") {
+        label = "Temperatura 500 hPa";
+        valor = valor + " °C";
+    }
+
+    else if (k === "delta_t_850_500_max_c") {
+        label = "Δ T850–T500";
+        valor = valor + " °C";
+    }
+
+    else if (k === "delta_t_mar_500_c") {
+        label = "Δ TSM–T500";
+        valor = valor + " °C";
+    }
+
+    else if (k === "delta_t_mar_850_c") {
+        label = "Δ TSM–T850";
+        valor = valor + " °C";
+    }
+
+    else if (k === "shear_medio_kt") {
+        label = "Cizalle medio";
+        valor = valor + " kt";
+    }
+
+    else if (k === "shear_bajo_kt") {
+        label = "Cizalle bajo nivel";
+        valor = valor + " kt";
+    }
+
+    else if (k === "tsm_local_c") {
+        label = "TSM";
+        valor = valor + " °C";
+    }
+
+    html += "<div><b>" + label + ":</b> " + valor + "</div>";
+}
+
+    cont.innerHTML = html;
+}
+
+
+function colorSubzona(prob) {
+    if (!prob) return "#888";
+    if (prob.includes("FAVORABLE CON")) return "#e53935";
+    if (prob.includes("AMBIENTE FAVORABLE")) return "#fb8c00";
+    if (prob.includes("VIGILANCIA")) return "#fdd835";
+    return "#4caf50";
+}
+
+function renderSubzonas(frame) {
+    const szs = frame.subzonas;
+    if (!szs || !szs.length) return "";
+    let html = "<div style='margin-top:12px; border-top:1px solid rgba(255,255,255,0.15); padding-top:8px;'>" +
+               "<b style='font-size:12px;'>Por subzona:</b><br>";
+    szs.forEach(sz => {
+        const col = colorSubzona(sz.probabilidad);
+        html += "<div style='display:flex; justify-content:space-between; font-size:12px; margin-top:4px;'>" +
+                "<span style='color:#bfd0ee;'>" + sz.label + "</span>" +
+                "<span style='color:" + col + "; font-weight:bold;'>" + sz.probabilidad + "</span>" +
+                "</div>";
+    });
+    html += "</div>";
+    return html;
+}
+
+function renderResumen(frame) {
+    const cont = document.getElementById("resumenContent");
+    if (!cont || !frame) return;
+
+    const r = frame.resumen;
+    if (!r) {
+        cont.innerHTML = "";
+        return;
+    }
+
+    // -----------------------------
+    // VARIABLES
+    // -----------------------------
+    const ir_val = frame.ir?.bt_min_ir_c;
+    const delta = frame.ir?.delta_bt_ir_c;
+    const indice_medio = frame.indices?.indice_promedio ?? "N/D";
+    const indice_p95 = frame.indices?.indice_p95 ?? "N/D";
+
+    // -----------------------------
+    // NIVEL / COLOR
+    // -----------------------------
+    let color = "#4caf50"; // verde
+    let texto_nivel = "NO FAVORABLE";
+
+    if (r.probabilidad === "VIGILANCIA") {
+        color = "#fdd835"; // amarillo
+        texto_nivel = "VIGILANCIA";
+    }
+
+    if (r.probabilidad === "AMBIENTE FAVORABLE") {
+        color = "#fb8c00"; // naranjo
+        texto_nivel = "AMBIENTE FAVORABLE";
+    }
+
+    if (r.probabilidad === "FAVORABLE CON CONVECCIÓN ACTIVA") {
+        color = "#e53935"; // rojo
+        texto_nivel = "FAVORABLE CON CONVECCIÓN ACTIVA";
+    }
+
+    // Persistencia: ventana total favorable a la que pertenece este frame
+    function esFavorable(prob) {
+        return prob === "VIGILANCIA" || prob === "AMBIENTE FAVORABLE" || prob === "FAVORABLE CON CONVECCIÓN ACTIVA";
+    }
+    let persistenciaHtml = "";
+    if (esFavorable(r.probabilidad)) {
+        // buscar inicio de la ventana (hacia atras)
+        let inicio = idx;
+        while (inicio > 0 && esFavorable(frames[inicio-1]?.resumen?.probabilidad)) inicio--;
+        // buscar fin de la ventana (hacia adelante)
+        let fin = idx;
+        while (fin < frames.length-1 && esFavorable(frames[fin+1]?.resumen?.probabilidad)) fin++;
+        let totalFrames = fin - inicio + 1;
+        let totalHoras = totalFrames * 3;
+        if (totalFrames >= 2) {
+            let fhInicio = frames[inicio]?.fh ?? 0;
+            let fhFin = frames[fin]?.fh ?? 0;
+            persistenciaHtml = "<div style='margin-top:4px;font-size:12px;opacity:0.8;'>&#8987; Ventana favorable: " + totalHoras + " h (fh+" + fhInicio + " a fh+" + fhFin + ")</div>";
+        }
+    }
+
+    // -----------------------------
+    // RESEÑA AUTOMÁTICA
+    // -----------------------------
+    let comentario = "";
+
+    if (color === "#4caf50") {
+        comentario = "Condiciones no favorables para desarrollo de trombas.";
+    }
+    else if (color === "#fdd835") {
+        comentario = "Ambiente en vigilancia. Posible evolución si se activa convección.";
+    }
+    else if (color === "#fb8c00") {
+        comentario = "Ambiente favorable, pero sin desarrollo convectivo relevante. Mantener monitoreo.";
+    }
+    else if (color === "#e53935") {
+        comentario = "Condiciones favorables con convección activa. Posible desarrollo de trombas.";
+    }
+
+    // -----------------------------
+    // FORMATO CON UNIDADES
+    // -----------------------------
+    const ir_txt = (ir_val !== undefined && ir_val !== null)
+        ? ir_val + " °C"
+        : "N/D";
+
+    const delta_txt = (delta !== undefined && delta !== null)
+        ? (delta > 0 ? "+" : "") + delta.toFixed(1) + " °C"
+        : "N/D";
+
+    // -----------------------------
+    // HTML
+    // -----------------------------
+    cont.innerHTML =
+        "<div style='color:" + color + "; font-weight:bold; font-size:16px; margin-bottom:4px;'>"
+        + texto_nivel + "</div>" +
+        persistenciaHtml +
+        "<div><b>Índice medio:</b> " + indice_medio + "</div>" +
+        "<div><b>Índice P95:</b> " + indice_p95 + "</div>" +
+
+        "<div><b>Probabilidad:</b> " + r.probabilidad + "</div>" +
+        "<div><b>IR:</b> " + r.ir + " (" + ir_txt + ")</div>" +
+        "<div><b>Tendencia:</b> " + r.tendencia_ir + " (Δ " + delta_txt + ")</div>" +
+        (frame.ir?.fecha_ir_obs ? "<div style='font-size:11px;opacity:0.7;'>Dato satelital: " + frame.ir.fecha_ir_obs + "</div>" : "") +
+        "<div><b>Atmósfera:</b> " + r.atmosfera + "</div>" +
+        "<div><b>Océano:</b> " + r.oceano + "</div>" +
+        "<div><b>Recomendación:</b> " + r.recomendacion + "</div>" +
+
+        "<div style='margin-top:10px; font-size:13px; opacity:0.9;'>"
+
+        + comentario +
+        "</div>" +
+
+        "<div style='margin-top:12px; font-size:12px; opacity:0.8;'>" +
+            "<b>Niveles:</b><br>" +
+            "<span style='color:#4caf50;'>■</span> No favorable<br>" +
+            "<span style='color:#fdd835;'>■</span> Vigilancia<br>" +
+            "<span style='color:#fb8c00;'>■</span> Ambiente favorable (requiere monitoreo)<br>" +
+            "<span style='color:#e53935;'>■</span> Favorable con convección activa" +
+        "</div>" +
+        renderSubzonas(frame);
+
+}
+
+    function nextFrame(){
+        idx = (idx + 1) % frames.length;
+        render();
+    }
+
+    function prevFrame(){
+        idx = (idx - 1 + frames.length) % frames.length;
+        render();
+    }
+
+    function startPlay(){
+        if (!timer) {
+            timer = setInterval(nextFrame, 1800);
+        }
+    }
+
+    function stopPlay(){
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+
+   
+document.querySelectorAll(".tabbtn").forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        document.querySelectorAll(".tabbtn").forEach(b => {
+            b.classList.remove("active");
+        });
+
+        btn.classList.add("active");
+
+        currentTab = btn.getAttribute("data-tab");
+
+        render();
+    });
+});
+        (function(){
+        var j = {"titulo": "PROBABILIDAD RELATIVA DE TROMBAS MARINAS", "subtitulo": "Visor pronóstico operacional", "frames": [{"fh": 0, "fecha_local": "29 OCT 2026 09:00 HORA LOCAL", "png": "MAPA_TROMBAS_000.png", "resumen": {"probabilidad": "NO FAVORABLE", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO LIMITADO", "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 92.0, "viento_10m_medio_kt": 8.4, "t500_min_c": -18.6, "delta_t_850_500_max_c": 31.1, "shear_medio_kt": 21.6, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 29.9, "delta_t_mar_850_c": 12.8, "shear_bajo_kt": 8.6, "interpretacion": "APOYO LIMITADO"}, "indices": {"indice_promedio": 29.0, "indice_p95": 35.8}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 43.1, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 46.5, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 51.1, "probabilidad": "VIGILANCIA"}]}, {"fh": 3, "fecha_local": "29 OCT 2026 12:00 HORA LOCAL", "png": "MAPA_TROMBAS_003.png", "resumen": {"probabilidad": "NO FAVORABLE", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO LIMITADO", "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 172.0, "viento_10m_medio_kt": 10.0, "t500_min_c": -20.6, "delta_t_850_500_max_c": 31.3, "shear_medio_kt": 27.2, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 30.3, "delta_t_mar_850_c": 12.8, "shear_bajo_kt": 8.6, "interpretacion": "APOYO LIMITADO"}, "indices": {"indice_promedio": 26.6, "indice_p95": 35.9}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 44.9, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 46.3, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 46.2, "probabilidad": "NO FAVORABLE"}]}, {"fh": 6, "fecha_local": "29 OCT 2026 15:00 HORA LOCAL", "png": "MAPA_TROMBAS_006.png", "resumen": {"probabilidad": "NO FAVORABLE", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO LIMITADO", "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 374.0, "viento_10m_medio_kt": 11.3, "t500_min_c": -21.3, "delta_t_850_500_max_c": 33.3, "shear_medio_kt": 36.3, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 30.6, "delta_t_mar_850_c": 12.8, "shear_bajo_kt": 8.6, "interpretacion": "APOYO LIMITADO"}, "indices": {"indice_promedio": 24.2, "indice_p95": 34.9}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 48.2, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 46.3, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 43.5, "probabilidad": "NO FAVORABLE"}]}, {"fh": 9, "fecha_local": "29 OCT 2026 18:00 HORA LOCAL", "png": "MAPA_TROMBAS_009.png", "resumen": {"probabilidad": "VIGILANCIA", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SEGUIMIENTO OPERATIVO: condiciones marginales. Revisar próxima corrida GFS."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 906.0, "viento_10m_medio_kt": 12.3, "t500_min_c": -29.3, "delta_t_850_500_max_c": 33.5, "shear_medio_kt": 41.4, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 32.6, "delta_t_mar_850_c": 12.9, "shear_bajo_kt": 8.7, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 29.5, "indice_p95": 59.9}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 47.1, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 44.2, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 61.4, "probabilidad": "VIGILANCIA"}]}, {"fh": 12, "fecha_local": "29 OCT 2026 21:00 HORA LOCAL", "png": "MAPA_TROMBAS_012.png", "resumen": {"probabilidad": "VIGILANCIA", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SEGUIMIENTO OPERATIVO: condiciones marginales. Revisar próxima corrida GFS."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 230.0, "viento_10m_medio_kt": 10.4, "t500_min_c": -29.7, "delta_t_850_500_max_c": 30.5, "shear_medio_kt": 38.1, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 33.6, "delta_t_mar_850_c": 12.9, "shear_bajo_kt": 8.8, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 31.5, "indice_p95": 59.7}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 44.4, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 49.5, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 69.2, "probabilidad": "AMBIENTE FAVORABLE"}]}, {"fh": 15, "fecha_local": "30 OCT 2026 00:00 HORA LOCAL", "png": "MAPA_TROMBAS_015.png", "resumen": {"probabilidad": "VIGILANCIA", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SEGUIMIENTO OPERATIVO: condiciones marginales. Revisar próxima corrida GFS."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 86.0, "viento_10m_medio_kt": 9.1, "t500_min_c": -30.2, "delta_t_850_500_max_c": 30.6, "shear_medio_kt": 35.5, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 32.7, "delta_t_mar_850_c": 12.8, "shear_bajo_kt": 8.7, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 26.4, "indice_p95": 51.1}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 42.9, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 33.6, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 60.1, "probabilidad": "VIGILANCIA"}]}, {"fh": 18, "fecha_local": "30 OCT 2026 03:00 HORA LOCAL", "png": "MAPA_TROMBAS_018.png", "resumen": {"probabilidad": "NO FAVORABLE", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 63.0, "viento_10m_medio_kt": 7.9, "t500_min_c": -27.2, "delta_t_850_500_max_c": 29.5, "shear_medio_kt": 32.1, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 32.6, "delta_t_mar_850_c": 12.7, "shear_bajo_kt": 8.6, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 25.1, "indice_p95": 37.4}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 42.9, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 37.4, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 42.7, "probabilidad": "NO FAVORABLE"}]}, {"fh": 21, "fecha_local": "30 OCT 2026 06:00 HORA LOCAL", "png": "MAPA_TROMBAS_021.png", "resumen": {"probabilidad": "NO FAVORABLE", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 79.0, "viento_10m_medio_kt": 7.1, "t500_min_c": -24.6, "delta_t_850_500_max_c": 27.2, "shear_medio_kt": 30.9, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 32.5, "delta_t_mar_850_c": 12.6, "shear_bajo_kt": 8.6, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 25.3, "indice_p95": 38.8}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 40.5, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 37.0, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 43.1, "probabilidad": "NO FAVORABLE"}]}, {"fh": 24, "fecha_local": "30 OCT 2026 09:00 HORA LOCAL", "png": "MAPA_TROMBAS_024.png", "resumen": {"probabilidad": "NO FAVORABLE", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 80.0, "viento_10m_medio_kt": 6.5, "t500_min_c": -23.2, "delta_t_850_500_max_c": 28.7, "shear_medio_kt": 28.9, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 32.2, "delta_t_mar_850_c": 12.7, "shear_bajo_kt": 8.6, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 25.4, "indice_p95": 33.5}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 40.4, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 35.3, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 40.6, "probabilidad": "NO FAVORABLE"}]}, {"fh": 27, "fecha_local": "30 OCT 2026 12:00 HORA LOCAL", "png": "MAPA_TROMBAS_027.png", "resumen": {"probabilidad": "NO FAVORABLE", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 108.0, "viento_10m_medio_kt": 7.3, "t500_min_c": -22.9, "delta_t_850_500_max_c": 32.6, "shear_medio_kt": 26.1, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 32.3, "delta_t_mar_850_c": 12.8, "shear_bajo_kt": 8.6, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 26.5, "indice_p95": 35.7}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 46.7, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 37.9, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 40.9, "probabilidad": "NO FAVORABLE"}]}, {"fh": 30, "fecha_local": "30 OCT 2026 15:00 HORA LOCAL", "png": "MAPA_TROMBAS_030.png", "resumen": {"probabilidad": "NO FAVORABLE", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 186.0, "viento_10m_medio_kt": 8.8, "t500_min_c": -23.3, "delta_t_850_500_max_c": 34.5, "shear_medio_kt": 27.5, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 32.5, "delta_t_mar_850_c": 12.8, "shear_bajo_kt": 8.7, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 27.4, "indice_p95": 37.2}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 49.6, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 42.2, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 43.6, "probabilidad": "NO FAVORABLE"}]}, {"fh": 33, "fecha_local": "30 OCT 2026 18:00 HORA LOCAL", "png": "MAPA_TROMBAS_033.png", "resumen": {"probabilidad": "NO FAVORABLE", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 535.0, "viento_10m_medio_kt": 10.0, "t500_min_c": -24.4, "delta_t_850_500_max_c": 35.0, "shear_medio_kt": 29.8, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 32.8, "delta_t_mar_850_c": 12.8, "shear_bajo_kt": 8.8, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 28.5, "indice_p95": 41.4}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 50.2, "probabilidad": "VIGILANCIA"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 44.0, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 43.4, "probabilidad": "NO FAVORABLE"}]}, {"fh": 36, "fecha_local": "30 OCT 2026 21:00 HORA LOCAL", "png": "MAPA_TROMBAS_036.png", "resumen": {"probabilidad": "NO FAVORABLE", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 125.0, "viento_10m_medio_kt": 8.9, "t500_min_c": -26.4, "delta_t_850_500_max_c": 32.0, "shear_medio_kt": 30.0, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 33.2, "delta_t_mar_850_c": 12.8, "shear_bajo_kt": 8.8, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 31.4, "indice_p95": 43.8}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 49.6, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 44.7, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 47.6, "probabilidad": "NO FAVORABLE"}]}, {"fh": 39, "fecha_local": "31 OCT 2026 00:00 HORA LOCAL", "png": "MAPA_TROMBAS_039.png", "resumen": {"probabilidad": "NO FAVORABLE", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 126.0, "viento_10m_medio_kt": 8.8, "t500_min_c": -24.9, "delta_t_850_500_max_c": 30.9, "shear_medio_kt": 29.3, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 33.6, "delta_t_mar_850_c": 12.8, "shear_bajo_kt": 8.7, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 32.8, "indice_p95": 43.2}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 47.0, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 44.3, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 44.7, "probabilidad": "NO FAVORABLE"}]}, {"fh": 42, "fecha_local": "31 OCT 2026 03:00 HORA LOCAL", "png": "MAPA_TROMBAS_042.png", "resumen": {"probabilidad": "NO FAVORABLE", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SIN ACCIÓN ESPECIAL: ambiente no propicio para trombas marinas."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 103.0, "viento_10m_medio_kt": 8.8, "t500_min_c": -25.9, "delta_t_850_500_max_c": 29.7, "shear_medio_kt": 29.6, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 34.0, "delta_t_mar_850_c": 12.8, "shear_bajo_kt": 8.6, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 34.0, "indice_p95": 46.7}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 44.8, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 43.8, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 47.5, "probabilidad": "NO FAVORABLE"}]}, {"fh": 45, "fecha_local": "31 OCT 2026 06:00 HORA LOCAL", "png": "MAPA_TROMBAS_045.png", "resumen": {"probabilidad": "VIGILANCIA", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SEGUIMIENTO OPERATIVO: condiciones marginales. Revisar próxima corrida GFS."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 137.0, "viento_10m_medio_kt": 8.6, "t500_min_c": -26.9, "delta_t_850_500_max_c": 28.3, "shear_medio_kt": 29.7, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 34.5, "delta_t_mar_850_c": 12.7, "shear_bajo_kt": 8.6, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 35.5, "indice_p95": 50.2}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 44.2, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 43.1, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 52.5, "probabilidad": "VIGILANCIA"}]}, {"fh": 48, "fecha_local": "31 OCT 2026 09:00 HORA LOCAL", "png": "MAPA_TROMBAS_048.png", "resumen": {"probabilidad": "VIGILANCIA", "ir": "SIN DESARROLLO RELEVANTE", "tendencia_ir": "SIN CAMBIOS", "atmosfera": "FAVORABLE", "oceano": "APOYO FAVORABLE", "recomendacion": "SEGUIMIENTO OPERATIVO: condiciones marginales. Revisar próxima corrida GFS."}, "ir": {"bt_min_ir_c": -46.9, "fecha_ir_obs": "2026-10-29 17:50 UTC", "delta_bt_ir_c": -0.7, "interpretacion": "SIN DESARROLLO RELEVANTE", "tendencia": "SIN CAMBIOS"}, "atmosfera": {"cape_max_jkg": 145.0, "viento_10m_medio_kt": 9.3, "t500_min_c": -27.2, "delta_t_850_500_max_c": 30.7, "shear_medio_kt": 29.5, "interpretacion": "FAVORABLE"}, "oceano": {"tsm_local_c": 13.6, "delta_t_mar_500_c": 34.8, "delta_t_mar_850_c": 12.7, "shear_bajo_kt": 8.5, "interpretacion": "APOYO FAVORABLE"}, "indices": {"indice_promedio": 36.7, "indice_p95": 53.7}, "subzonas": [{"lat_min": -43.0, "lat_max": -39.0, "label": "39–43°S", "indice_p95": 45.7, "probabilidad": "NO FAVORABLE"}, {"lat_min": -46.0, "lat_max": -43.0, "label": "43–46°S", "indice_p95": 41.9, "probabilidad": "NO FAVORABLE"}, {"lat_min": -49.0, "lat_max": -46.0, "label": "46–49°S", "indice_p95": 54.7, "probabilidad": "VIGILANCIA"}]}]};
+        frames = j.frames || [];
+        render();
+        startPlay();
+    })();
+
+</script>
+
+</body>
+</html>
+<!-- build: 1793297516.6122344 -->
